@@ -10,9 +10,18 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import('@/views/home/index.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue')
   },
-  NewsRoute, UserRoute
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "notFound" */ '@/views/404/index.vue')
+  },
+  NewsRoute, UserRoute,
+  {
+    path: '*',
+    redirect: '/404'
+  }
 ];
 
 const router = new VueRouter({
